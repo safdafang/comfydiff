@@ -1,0 +1,10 @@
+{
+  "param-changed": "KSampler steps/cfg/sampler/scheduler changed, new seed",
+  "node-added": "LoraLoader inserted between checkpoint and sampler/prompts",
+  "rewired": "positive and negative inputs of KSampler swapped",
+  "moved-only": "only layout: nodes moved, one resized, one recolored",
+  "ids-changed": "same graph rebuilt: all ids renumbered and nodes reordered",
+  "prompt-text": "positive prompt edited (a few words)",
+  "node-bypassed": "LoraLoader bypassed (API format routes around it)",
+  "node-muted": "PreviewImage muted"
+}

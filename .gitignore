@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+coverage/
+packages/cli/README.md
+packages/cli/LICENSE

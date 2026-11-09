@@ -1,0 +1,107 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 156680208700286,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "CheckpointLoaderSimple"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "EmptyLatentImage"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "a watercolor painting of a lighthouse on a rocky coast, golden hour, soft warm light, seagulls, highly detailed, masterpiece",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIPTextEncode"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "blurry, low quality, watermark, text, jpeg artifacts",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIPTextEncode"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAEDecode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "SaveImage"
+    }
+  }
+}

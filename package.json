@@ -1,0 +1,23 @@
+{
+  "name": "comfydiff-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/cli",
+    "packages/web"
+  ],
+  "scripts": {
+    "fixtures": "node scripts/gen-fixtures.ts",
+    "typecheck": "tsc -p packages/core && tsc -p packages/core/test && tsc -p packages/cli && tsc -p packages/web && tsc -p tsconfig.scripts.json",
+    "test": "vitest run",
+    "build": "npm run build -w packages/cli && npm run build -w packages/web",
+    "dev": "npm run dev -w packages/web"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0"
+  }
+}

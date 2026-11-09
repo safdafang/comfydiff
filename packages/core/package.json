@@ -1,0 +1,10 @@
+{
+  "name": "@comfydiff/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Parse, normalize and diff ComfyUI workflows. Pure TypeScript, no DOM or Node APIs.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "MIT"
+}

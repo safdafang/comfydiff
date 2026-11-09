@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>comfydiff: diff two ComfyUI workflows</title>
+    <meta name="description" content="Drop two ComfyUI images or workflow JSON files and see which settings, prompts, nodes and links changed. Runs in your browser, nothing is uploaded." />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script type="module" src="./src/main.ts"></script>
+  </head>
+  <body>
+    <header class="bar">
+      <a class="logo" href="./">comfy<span>diff</span></a>
+      <span class="bar-text">diff two ComfyUI workflows</span>
+      <nav>
+        <a href="https://github.com/safdafang/comfydiff" rel="noopener">github</a>
+        <button type="button" id="theme" class="bar-btn">theme: auto</button>
+      </nav>
+    </header>
+
+    <main class="canvas">
+      <div class="graph" id="graph">
+        <svg class="wires" id="wires" aria-hidden="true"></svg>
+        <div class="inputs">
+          <section class="node load" id="slot-a" data-slot="a" aria-label="Workflow A"></section>
+          <section class="node load" id="slot-b" data-slot="b" aria-label="Workflow B"></section>
+          <section class="node note">
+            <div class="title"><span class="title-dot"></span>Note</div>
+            <div class="body note-body">
+              <p>Drop a PNG or WebP saved by ComfyUI, or a workflow .json (normal or API export) into each Load node. You can also drop both files at once or paste with Ctrl+V.</p>
+              <p>Everything runs in this tab. Files are not uploaded and the page is not allowed to make network requests.</p>
+            </div>
+          </section>
+        </div>
+        <section class="node diff" id="diff" aria-live="polite"></section>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <span>cli and git driver: <code>npx comfydiff a.png b.png</code></span>
+      <span>MIT</span>
+    </footer>
+  </body>
+</html>

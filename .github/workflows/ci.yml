@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  cli-runtime:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w packages/cli
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Smoke test the CLI bundle
+        run: |
+          node --version
+          set +e
+          node packages/cli/dist/cli.js fixtures/example/a.png fixtures/images/itxt-compressed.png > out.txt
+          code=$?
+          set -e
+          cat out.txt
+          test "$code" -eq 1
+          grep -q "KSampler" out.txt
+          node packages/cli/dist/cli.js textconv fixtures/images/ztxt.png | grep -q "KSampler"
+          node packages/cli/dist/cli.js fixtures/pairs/moved-only/a.workflow.json fixtures/pairs/moved-only/b.workflow.json

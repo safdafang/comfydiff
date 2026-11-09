@@ -1,0 +1,38 @@
+{
+  "name": "comfydiff",
+  "version": "0.1.0",
+  "description": "Readable diffs for ComfyUI workflows (PNG, WebP or JSON). CLI and git textconv driver.",
+  "type": "module",
+  "bin": {
+    "comfydiff": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "comfyui",
+    "workflow",
+    "diff",
+    "git",
+    "textconv",
+    "stable-diffusion"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safdafang/comfydiff.git",
+    "directory": "packages/cli"
+  },
+  "scripts": {
+    "build": "vite build",
+    "prepack": "vite build && node ../../scripts/copy-readme.mjs"
+  },
+  "devDependencies": {
+    "@comfydiff/core": "*"
+  }
+}

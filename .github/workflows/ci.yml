@@ -30,6 +30,7 @@ jobs:
   cli-runtime:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         node: [18, 20]
     steps:
@@ -47,7 +48,7 @@ jobs:
         run: |
           node --version
           set +e
-          node packages/cli/dist/cli.js fixtures/example/a.png fixtures/images/itxt-compressed.png > out.txt
+          node packages/cli/dist/cli.js fixtures/example/a.png fixtures/example/b.png > out.txt
           code=$?
           set -e
           cat out.txt
